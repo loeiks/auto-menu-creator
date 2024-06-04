@@ -1,0 +1,38 @@
+.product-custom-pricing {
+    /* Position in box */
+    width: max-content;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+
+    /* display settings */
+    display: flex;
+    gap: 3px;
+    justify-content: flex-end;
+    justify-self: flex-end;
+    align-items: end;
+    flex-direction: column-reverse;
+
+    /* gaps and margins */
+    margin-right: 12px;
+    margin-bottom: -6px;
+}
+
+.pricing-box {
+    /* display settings */
+    width: max-content;
+    padding: 1px 3px 1px 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* font settings */
+    font-size: 6pt;
+    text-align: end;
+
+    /* background and border */
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1.5px solid white;
+    border-radius: 3px;
+}

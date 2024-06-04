@@ -1,0 +1,14 @@
+.menu-page {
+    /* display settings */
+    padding: 0px;
+    margin: 0;
+
+    /* A4 setting */
+    width: 210mm;
+    height: 297mm;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 18px;
+}
