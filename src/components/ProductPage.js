@@ -1,16 +1,18 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Body from "./Body";
 import Header from "./Header";
 import Footer from "./Footer";
 import axios from 'axios';
 import '../styles/page.css';
 
-function Page() {
+function ProductPage() {
+    const { offset1, offset2, sectionId } = useParams();
     const componentRef = useRef();
     const [items, setItems] = useState();
 
     const getItems = async () => {
-        const response = await axios.get("http://localhost:1818/api/items/25a2bd15-8349-46cc-a32d-e7560cdfeed4");
+        const response = await axios.get(`http://localhost:1818/api/items/${sectionId}/${offset1}/${offset2}`);
         setItems(response.data);
     };
 
@@ -27,4 +29,4 @@ function Page() {
     );
 }
 
-export default Page;
+export default ProductPage;

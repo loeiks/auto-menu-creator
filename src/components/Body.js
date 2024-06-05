@@ -15,7 +15,7 @@ function Body({ items }) {
     // Sync props to state
     useEffect(() => {
         if (items && items.length > 0) {
-            setProducts(items.slice(2, 10));
+            setProducts(items);
         }
     }, [items]);
 
@@ -45,7 +45,7 @@ function Body({ items }) {
         <div className="products">
             {products && products.length > 0 ? (
                 products.map((product) => (
-                    <div className="product-box" style={{ backgroundImage: `url(${product.image.url})` }} key={product.id}>
+                    <div className="product-box" style={{ backgroundImage: `url(${product.image.url})`, backgroundSize: "101%" }} key={product.id}>
                         <FeatureLabels labels={product.labels} />
                         <ProductLabels labels={product.labels} />
                         <CustomPricing variants={product.priceVariants} />
@@ -70,7 +70,6 @@ function CustomPricing({ variants }) {
     let content = [];
 
     if (variants) {
-        console.log(variants);
         for (const { variantId, price } of variants["variants"]) {
             if (variantIds[variantId] === "piece") {
                 content.push(

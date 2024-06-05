@@ -3,7 +3,8 @@ import '../styles/header.css';
 
 function Header({ title, image, pageNo }) {
     const headerStyle = {
-        background: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(${image})`
+        background: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url(${image})`,
+        backgroundSize: "102%"
     };
 
     return (

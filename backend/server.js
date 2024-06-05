@@ -19,11 +19,13 @@ const headers = {
 
 app.use(cors());
 
-app.get('/api/items/:sectionId', async (req, res, next) => {
+app.get('/api/items/:sectionId/:offset1/:offset2', async (req, res, next) => {
     try {
         const sectionId = req.params.sectionId;
+        const startIndex = req.params.offset1;
+        const stopIndex = req.params.offset2;
 
-        if (!sectionId) {
+        if (!sectionId || !startIndex || !stopIndex) {
             res.sendStatus(400).send("Section ID Missing!");
         }
 
@@ -55,7 +57,7 @@ app.get('/api/items/:sectionId', async (req, res, next) => {
         });
 
         items = await Promise.all(items);
-        res.status(200).send(items);
+        res.status(200).send(items.slice(parseFloat(startIndex), parseFloat(stopIndex)));
     } catch (err) {
         console.error(err);
         res.status(500).send({ error: 'Internal Server Error' });
