@@ -57,6 +57,11 @@ app.get('/api/items/:sectionId/:offset1/:offset2', async (req, res, next) => {
         });
 
         items = await Promise.all(items);
+
+        if (parseFloat(startIndex) === 0 && parseFloat(stopIndex) === 0) {
+            res.status(200).send(items);
+        }
+
         res.status(200).send(items.slice(parseFloat(startIndex), parseFloat(stopIndex)));
     } catch (err) {
         console.error(err);
