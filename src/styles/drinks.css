@@ -3,6 +3,7 @@
     display: grid;
     width: calc(100% - 18 * 2px);
     height: max-content;
+    max-height: 100%;
 
     /* gaps */
     padding-right: 18px;

@@ -13,13 +13,14 @@ async function captureScreenshot() {
     });
 
     // Replace with the URL of your page
-    await page.goto('http://localhost:3000');
+    await page.goto('http://localhost:3000/25a2bd15-8349-46cc-a32d-e7560cdfeed4/0/8/1');
 
     // Replace with the selector of the element you want to screenshot
     const element = await page.$('.menu-page');
 
     // Define the path where you want to save the screenshot (customize later)
     const savePath = path.join('C:', 'Users', 'enes', 'Downloads', 'menu.png');
+
 
     setTimeout(async () => {
         // Take a screenshot of the element

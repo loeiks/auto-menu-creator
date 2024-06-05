@@ -16,8 +16,8 @@ function Drinks({ items }) {
             {
                 drinks && drinks.length > 0 ? (
                     drinks.map((drink) => (
-                        <div className="drink-box-padding">
-                            <div className="drink-box" key={drink.id}>
+                        <div className="drink-box-padding" key={drink.id}>
+                            <div className="drink-box">
                                 <p className="drink-name">{drink.name}</p>
                                 <p className="drink-price">{parseFloat(drink.price).toFixed(2)}€</p>
                             </div>

@@ -21,8 +21,9 @@ const headers = {
 app.use(cors());
 
 const itemsCache = new NodeCache({ stdTTL: 120, deleteOnExpire: true, useClones: false });
+const apisRoute = express.Router();
 
-app.get('/api/items/:sectionId/:offset1/:offset2', async (req, res, next) => {
+apisRoute.get('/items/:sectionId/:offset1/:offset2', async (req, res, next) => {
     try {
         const sectionId = req.params.sectionId;
         const startIndex = req.params.offset1;
@@ -79,6 +80,19 @@ app.get('/api/items/:sectionId/:offset1/:offset2', async (req, res, next) => {
         res.status(500).send({ error: 'Internal Server Error' });
     }
 });
+
+apisRoute.get('/sections', async (req, res, next) => {
+    try {
+        const response = await axios.get("https://www.wixapis.com/restaurants/menus-section/v1/sections", { headers });
+        const sections = response.data;
+        res.send(sections);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ error: 'Internal Server Error' });
+    }
+});
+
+app.use('/api', apisRoute);
 
 app.listen(PORT, () => {
     console.log("Server Started!");

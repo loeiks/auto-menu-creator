@@ -1,0 +1,57 @@
+p {
+    margin: 0px;
+    padding: 0px;
+}
+
+.dashboard {
+    width: max-content;
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 24px;
+    gap: 24px;
+}
+
+.sections {
+    grid-column-start: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pages {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pages a p {
+    width: 100%;
+    height: auto;
+    color: red;
+}
+
+.open-pages {
+    width: 100%;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+button {
+    width: 100%;
+    background-color: #bf0033;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    padding: 6px 12px 6px 12px;
+    font-family: Poppins;
+    cursor: pointer;
+}
+
+a {
+    font-size: 16px;
+    font-family: Poppins;
+}
