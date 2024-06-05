@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const NodeCache = require('node-cache');
 dotenv.config();
 
 const app = express();
@@ -19,6 +20,8 @@ const headers = {
 
 app.use(cors());
 
+const itemsCache = new NodeCache({ stdTTL: 120, deleteOnExpire: true, useClones: false });
+
 app.get('/api/items/:sectionId/:offset1/:offset2', async (req, res, next) => {
     try {
         const sectionId = req.params.sectionId;
@@ -32,24 +35,32 @@ app.get('/api/items/:sectionId/:offset1/:offset2', async (req, res, next) => {
         const sectionData = await axios.get(`https://www.wixapis.com/restaurants/menus-section/v1/sections/${sectionId}`, { headers });
         const section = sectionData.data.section;
 
-        const filter = {
-            query: {
-                filter: {
-                    "id": { $in: section.itemIds }
-                }
-            }
+        if (!itemsCache.get("items")) {
+            const { data } = await axios.get("https://www.wixapis.com/restaurants/menus-item/v1/items", { headers });
+            itemsCache.set("items", data.items);
         }
 
-        const response = await axios.post("https://www.wixapis.com/restaurants/menus-item/v1/items/query", filter, { headers });
+        const unfilteredItems = itemsCache.get("items");
 
-        let items = response.data.items.map(async (item) => {
-            let labels = await item.labels.map(async (label) => {
-                const { data } = await axios.get(`https://www.wixapis.com/restaurants/item-labels/v1/labels/${label.id}`, { headers });
-                return data.label;
-            });
+        let filteredItems = unfilteredItems.filter((item) => {
+            if (section.itemIds.includes(item.id)) {
+                return true;
+            } else {
+                return false;
+            }
+        })
+
+        let items = filteredItems.map(async (item) => {
+            let labels = [];
+
+            if (item.labels.length > 0) {
+                labels = await item.labels.map(async (label) => {
+                    const { data } = await axios.get(`https://www.wixapis.com/restaurants/item-labels/v1/labels/${label.id}`, { headers });
+                    return data.label;
+                });
+            }
 
             labels = await Promise.all(labels);
-
             return {
                 ...item,
                 labels
@@ -59,10 +70,10 @@ app.get('/api/items/:sectionId/:offset1/:offset2', async (req, res, next) => {
         items = await Promise.all(items);
 
         if (parseFloat(startIndex) === 0 && parseFloat(stopIndex) === 0) {
-            res.status(200).send(items);
+            res.status(200).send({ items, sectionData: sectionData.data });
+        } else {
+            res.status(200).send({ items: items.slice(parseFloat(startIndex), parseFloat(stopIndex)), sectionData: sectionData.data });
         }
-
-        res.status(200).send(items.slice(parseFloat(startIndex), parseFloat(stopIndex)));
     } catch (err) {
         console.error(err);
         res.status(500).send({ error: 'Internal Server Error' });
