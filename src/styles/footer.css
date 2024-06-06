@@ -6,10 +6,10 @@
     justify-content: center;
 
     /* style settings */
-    background-color: #202020;
-    padding: 6px;
+    background-color: var(--background-footer);
+    padding: var(--s10);
 }
 
 .footer p {
-    font-size: 12px;
+    font-size: var(--p1);
 }

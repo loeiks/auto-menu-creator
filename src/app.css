@@ -1,0 +1,31 @@
+:root {
+    /* gaps */
+    --s1: 60px;
+    --s2: 54px;
+    --s3: 48px;
+    --s4: 42px;
+    --s5: 36px;
+    --s6: 30px;
+    --s7: 24px;
+    --s8: 18px;
+    --s9: 12px;
+    --s10: 6px;
+    --s11: 3px;
+
+    /* font sizes */
+    --h1: 33pt;
+    --h4: 10pt;
+    --h5: 9pt;
+    --h6: 8pt;
+    --p1: 6pt;
+    --p2: 6pt;
+    --p3: 5pt;
+
+    /* colors */
+    --background-primary: rgba(0, 0, 0, 0.5);
+    --font-primary: white;
+    --label-primay: #ff9000;
+    --label-new: #009ce0;
+    --background: #f9f9fc;
+    --background-footer: #202020;
+}

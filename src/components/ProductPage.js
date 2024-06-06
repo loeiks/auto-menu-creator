@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, } from 'react-router-dom';
 import Body from "./Body";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -26,16 +26,18 @@ function ProductPage({ drinks }) {
         getItems();
     }, []);
 
+    const getBody = () => {
+        if (drinks) {
+            return <Drinks items={items} />
+        } else {
+            return <Body items={items} />
+        }
+    }
+
     return (
         <div ref={componentRef} className="menu-page">
             <Header image={headerImg} title={title} pageNo={pageNo} />
-            {
-                drinks ? (
-                    <Drinks items={items} />
-                ) : (
-                    <Body items={items} />
-                )
-            }
+            {getBody()}
             <Footer />
         </div>
     );

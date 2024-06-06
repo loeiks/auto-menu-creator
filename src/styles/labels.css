@@ -5,8 +5,8 @@
     grid-row-start: 1;
     grid-row-end: 1;
     display: flex;
-    gap: 6px;
-    margin: 12px;
+    gap: var(--s10);
+    margin: var(--s9);
     align-items: center;
     justify-content: center;
 }
@@ -19,30 +19,30 @@
 
 .feature-label {
     display: flex;
-    padding: 1px 6px 1px 6px;
+    padding: 1px 6px;
     border-radius: 3px;
     max-height: 16px;
 
     /* font settings */
-    font-size: 8pt;
+    font-size: var(--h6);
     text-align: center;
     text-align-last: center;
 }
 
 .new-label {
     color: white;
-    background-color: #009ce0;
+    background-color: var(--label-new);
 }
 
 .special-label {
     color: white;
-    background-color: #ff9000;
-    padding: 1px 3px 1px 3px;
+    background-color: var(--label-primay);
+    padding: 1px 3px;
 }
 
 .premium-label {
     color: white;
-    background-color: #ff9000;
+    background-color: var(--label-primay);
 }
 
 /* PRODUCT LABELS */
@@ -54,9 +54,9 @@
     grid-row-start: 2;
     grid-row-end: 2;
     display: flex;
-    gap: 3px;
-    margin-top: 12px;
-    margin-left: 12px;
+    gap: var(--s11);
+    margin-top: var(--s9);
+    margin-left:var(--s9);
     align-items: center;
     justify-content: center;
 }

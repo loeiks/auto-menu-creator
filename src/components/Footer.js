@@ -4,7 +4,7 @@ function Footer() {
     return (
         <div className="footer">
             <p>
-                Please let us know if you are allergic to something.
+                For more information about anything you can ask questions. (Let us know if you are allergic to something)
             </p>
         </div>
     );

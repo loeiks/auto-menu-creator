@@ -7,7 +7,7 @@ h1 {
 }
 
 .header {
-    padding: 18px;
+    padding: var(--s8);
     width: calc(100% - 18 * 2px);
     height: auto;
     display: grid;
