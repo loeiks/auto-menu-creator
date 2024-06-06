@@ -11,6 +11,7 @@ function App() {
                 <Route path="/:sectionId/:offset1/:offset2/:pageNo" element={<ProductPage />} />
                 <Route path="drinks/:sectionId/:pageNo" element={<ProductPage drinks={true} />} />
                 <Route path="/" element={<Dashboard />} />
+                <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
         </Router>
     );
