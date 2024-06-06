@@ -11,4 +11,6 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     gap: 18px;
+
+    background-color: #f9f9fc;
 }
