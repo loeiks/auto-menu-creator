@@ -20,7 +20,7 @@ function BreakfastPage() {
                 breakfastNo === "1" ? (
                     <Page title="Classic Breakfast" price={9} details={getDetails()} backgroundImg="https://static.wixstatic.com/media/510eca_45fccd7255114f2bb5f6d7c168c01a97~mv2.jpg" />
                 ) : breakfastNo === "2" ? (
-                    <Page title="Serpme Breakfast" price={12.5} details={getDetails()} backgroundImg="https://static.wixstatic.com/media/510eca_d3f12659a1524667b398a2025ebe816b~mv2.jpg" />
+                    <Page title="Serpme Breakfast" price={13} details={getDetails()} backgroundImg="https://static.wixstatic.com/media/510eca_d3f12659a1524667b398a2025ebe816b~mv2.jpg" />
                 ) : breakfastNo === "3" ? (
                     <Page title="Seyidoglu Breakfast" price={16} details={getDetails()} backgroundImg="https://static.wixstatic.com/media/510eca_138993adfb834f33bd10d6d6a1a33b8a~mv2.jpg" />
                 ) : (
