@@ -45,7 +45,7 @@ function Page({ title, details, backgroundImg, price }) {
                 <p>{details}</p>
             </div>
             <div className="price-details-box">
-                <p className="person-details">Prices are for single person if you order for more price will change accordingly.</p>
+                <p style={{ textAlign: "center" }} className="person-details">Prices are for single person if you order for more price will change accordingly. Fiyatlar tek kişi içindir eğer daha fazlası için sipariş ederseniz fiyat buna göre değişiecektir.</p>
             </div>
         </div>
     )
