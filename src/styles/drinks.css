@@ -22,8 +22,7 @@
 .drink-box {
     /* self display */
     width: calc(100% - 24px);
-    min-height: auto;
-    max-height: calc(100% - 24px);
+    height: auto;
 
     /* styling */
     background-color: var(--background-primary);
@@ -40,7 +39,7 @@
     align-items: center;
 
     /* gaps */
-    padding: var(--s9);
+    padding: 6px 12px;
 }
 
 .drink-name {
