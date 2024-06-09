@@ -13,3 +13,11 @@ p {
     color: white !important;
     box-sizing: border-box !important;
 }
+
+#root {
+    display: flex;
+    width: 216mm;
+    height: 303mm;
+    justify-content: center;
+    align-items: center;
+}
