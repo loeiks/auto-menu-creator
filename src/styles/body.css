@@ -29,9 +29,8 @@
     grid-template-columns: 1fr 1fr;
 
     /* bg settings */
-    background-size: 101%;
     border-radius: var(--s10);
-
+    
     /* alignment */
     align-items: end;
 }
@@ -113,4 +112,20 @@
     /* gaps */
     margin-bottom: var(--s11);
     margin-top: var(--s11);
+}
+
+.promotions-box {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: var(--s10);
+    border: 1.5px solid #202020;
+}
+
+.promotions-text {
+    color: black !important;
+    font-size: 7.14pt;
+    font-weight: 400;
 }

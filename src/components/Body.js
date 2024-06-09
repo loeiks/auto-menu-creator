@@ -45,7 +45,7 @@ function Body({ items }) {
         <div className="products">
             {products && products.length > 0 ? (
                 products.map((product) => (
-                    <div className="product-box" style={{ backgroundImage: `url(${product.image.url})`, backgroundSize: "101%" }} key={product.id}>
+                    <div className="product-box" style={{ background: `url(${product.image.url}) repeat-y center center / 112%` }} key={product.id}>
                         <FeatureLabels labels={product.labels} />
                         <ProductLabels labels={product.labels} />
                         <CustomPricing variants={product.priceVariants} />
@@ -62,6 +62,28 @@ function Body({ items }) {
             ) : (
                 <p>No products available</p>
             )}
+            {
+                products.length === 5 || products.length === 6 ? (
+                    <div className="promotions-box" style={{
+                        gridRowStart: "4",
+                        gridColumnStart: "1",
+                        gridColumnEnd: "3"
+                    }}>
+                        <p className="promotions-text">Promotions are on the way...</p>
+                    </div>
+                ) : products.length === 4 || products.length === 3 ? (
+                    <div className="promotions-box" style={{
+                        gridRowStart: "3",
+                        gridRowEnd: "5",
+                        gridColumnStart: "1",
+                        gridColumnEnd: "3"
+                    }}>
+                        <p className="promotions-text">Promotions are on the way...</p>
+                    </div>
+                ) : (
+                    <></>
+                )
+            }
         </div>
     );
 }
