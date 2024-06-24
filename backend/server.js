@@ -3,6 +3,9 @@ const axios = require('axios');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const NodeCache = require('node-cache');
+const http = require('http');
+
+const { onlineRoute } = require('./online-platforms');
 dotenv.config();
 
 const app = express();
@@ -11,6 +14,10 @@ const PORT = 1818; // I just love 18
 const accountId = process.env.ACCOUNT_ID;
 const apiKey = process.env.WIX_API;
 const siteId = process.env.SITE_ID;
+
+// Set default timeout to 5min
+const server = http.createServer(app);
+server.setTimeout(5 * 60 * 1000);
 
 const headers = {
     'Authorization': apiKey,
@@ -95,6 +102,7 @@ apisRoute.get('/sections', async (req, res, next) => {
     }
 });
 
+apisRoute.use(onlineRoute);
 app.use('/api', apisRoute);
 
 app.listen(PORT, () => {
