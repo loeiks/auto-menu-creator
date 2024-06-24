@@ -57,7 +57,12 @@ router.get('/menu-docs/:sectionId', async (req, res) => {
 
             texts.push(`\n## ${item.name}\n`);
             texts.push(`**Name:** ${item.name}\n`);
-            texts.push(`**Description:** ${item.description}\n`);
+
+            // Add description only if it exists.
+            if (item.description) {
+                texts.push(`**Description:** ${item.description}\n`);
+            }
+
             texts.push(`**Image**: ${index}.jpg\n`);
 
             if (item.price) {
@@ -107,12 +112,12 @@ router.get('/menu-docs/:sectionId', async (req, res) => {
             }
         }
 
-        texts.push("\n‎\n");
-        texts.push("‎\n");
-        texts.push("‎\n");
-        texts.push("‎\n");
-        texts.push(divider);
-        texts.push(`This documentation is automatically created, for questions please email us. **Powered by Clusters & Wix.**`);
+        // texts.push("\n‎\n");
+        // texts.push("‎\n");
+        // texts.push("‎\n");
+        // texts.push("‎\n");
+        // texts.push(divider);
+        // texts.push(`This documentation is automatically created, for questions please email us. **Powered by Clusters & Wix.**`);
 
         let documentation = texts.join('');
 
