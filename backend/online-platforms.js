@@ -16,15 +16,17 @@ const headers = {
 };
 
 const sectionsIds = [
-    "84753f92-6a53-470f-9188-25c89efc92cd", // baklava & kataifi
+    "84753f92-6a53-470f-9188-25c89efc92cd", // baklava & kataifi 0
     "878cf8f9-d1cc-4826-b81f-97e18b47f3ca", // desserts
     "e00f362b-b4c3-4f5e-993e-27f1e96915f7", // snacks
+    "b561a98d-7bc2-4aa7-b848-1950dac1b915", // soups
+    "c37753b3-ee8a-4e4b-ba8b-75eb722186f7", // wraps & breads
     "6b4fb1c5-f10c-48e7-93e5-e651c9049157", // main courses
     "bbd93ad4-69e9-4a85-a67f-dd17e82b49d6", // salads
-    "062b04d3-2fe0-4b20-81fa-3643f6042810", // drinks
+    "062b04d3-2fe0-4b20-81fa-3643f6042810", // drinks 7
 ]
 
-router.get('/online-pdf/:sectionId', async (req, res) => {
+router.get('/menu-docs/:sectionId', async (req, res) => {
     try {
         const { sectionId } = req.params;
         const { data } = await axios.get(`https://www.wixapis.com/restaurants/menus-section/v1/sections/${sectionsIds[sectionId]}`, { headers });
