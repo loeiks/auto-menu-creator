@@ -24,6 +24,7 @@ const sectionsIds = [
     "6b4fb1c5-f10c-48e7-93e5-e651c9049157", // main courses
     "bbd93ad4-69e9-4a85-a67f-dd17e82b49d6", // salads
     "062b04d3-2fe0-4b20-81fa-3643f6042810", // drinks 7
+    "e39cad34-c8d4-45ed-af25-c679c6fd1b7a", // packaged products 8
 ]
 
 router.get('/menu-docs/:sectionId', async (req, res) => {
@@ -47,8 +48,8 @@ router.get('/menu-docs/:sectionId', async (req, res) => {
         let divider = '\n\n‎\n\n---\n\n';
         let space = "\n\n‎\n\n";
 
-        texts.push(`This PDF will explain which products to include with details into **${data["section"].name}** category.`);
-        texts.push(` Every image has a number and a folder, folder names and category names are same. Images for this category are in the **"${data["section"].name} Images"** folder.\n`);
+        texts.push(`This PDF will explain which products to include with all required details into **${data["section"].name}** category. `);
+        texts.push(`Every image has a number and a folder, folder names and category names are same. Images for this category are in the **"${data["section"].name}"** folder.\n`);
         texts.push(divider);
 
         for (const [index, itemId] of itemIds.entries()) {
@@ -71,7 +72,7 @@ router.get('/menu-docs/:sectionId', async (req, res) => {
 
             if (item.priceVariants) {
                 if (item.priceVariants.variants.length > 0) {
-                    texts.push(`\n‎\n\n**Selection Name:** Select Size\n`)
+                    texts.push(`\n‎\n\n**Selection Name:** Pick Size\n`)
                     texts.push(`**Selection Type:** Required\n`);
                     texts.push(`**Maximum Selection:** 1\n\n`);
 
@@ -121,7 +122,7 @@ router.get('/menu-docs/:sectionId', async (req, res) => {
 
         let documentation = texts.join('');
 
-        res.attachment(data["section"].name + '.md');
+        res.setHeader('Content-Disposition', `attachment; filename="${data["section"].name}.md"`);
         res.send(documentation);
     } catch (err) {
         console.error(err.message);
